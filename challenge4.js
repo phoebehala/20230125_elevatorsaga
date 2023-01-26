@@ -21,8 +21,10 @@
                 console.log(elevator, floors.length)
                 console.log(elevator, elevator.currentFloor())
                 
-                if(elevator.currentFloor() === floors.length){
-                    for( let i = elevator.currentFloor(); i < 0; i-- ){
+                if(elevator.currentFloor() === floors.length-1){
+                    console.log('go down')
+                    for( let i = elevator.currentFloor()-1; i> 0; i-- ){
+                        console.log('go to', i)
                         elevator.goToFloor(i);
                     }
                 }else{

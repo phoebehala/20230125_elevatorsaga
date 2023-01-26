@@ -4,7 +4,8 @@
 
         // Whenever the elevator is idle (has no more queued destinations) ...
         elevator.on("idle", function() {
-
+           
+ 
             if(elevator.getPressedFloors().length > 0) {
                 console.log(elevator.getPressedFloors())
                 // Maybe go to some chosen floor first?
@@ -16,22 +17,24 @@
                 } 
             }
 
-
             elevator.on("floor_button_pressed", function(floorNum) {
                 elevator.goToFloor(floorNum);
             })
 
+            console.log(elevator.currentFloor())
             console.log(floors.length)
             if(elevator.currentFloor() === floors.length-1){
-                for( let i = elevator.currentFloor(); i < 0; i-- ){
+                for( let i = elevator.currentFloor()-1; i < 0; i-- ){
                     elevator.goToFloor(i);
                 }
             }else{
                 console.log('else')
-                for( let i = elevator.currentFloor(); i <=floors.length; i++ ){
+                for( let i = elevator.currentFloor()+1; i <=floors.length; i++ ){
                     elevator.goToFloor(i);
                 }                  
             }
+
+
 
 
         })
